@@ -1,4 +1,4 @@
-/*Autoria: Victor Hugo Cardoso - Data: março de 2018. Este programa mantem o 
+/*Autoria: Victor Hugo Cardoso - Data: marÃ§o de 2018. Este programa mantem o 
 estoque de um mercadinho informatizado,utilizando um sistema para realizar suas
 vendas e realizar consultas ao estoque e ao saldo atual do caixa. */
 #include <stdio.h>
@@ -6,7 +6,7 @@ vendas e realizar consultas ao estoque e ao saldo atual do caixa. */
 #include <locale.h>
 /* Definicao de Constantes */ 
 #define MAX 1000
-// Protótipo das Funções
+// ProtÃ³tipo das FunÃ§Ãµes
 void menu();
 int verificarSeExisite(int codigo,int qtdd);
 void cadastrarProduto(int &qtdd,float &saldo);
@@ -23,12 +23,12 @@ struct registro_produtos
 	   	float precoCompra;
 	   	float precoVenda;
 	};
-//Criando o vetor produto que é do tipo struct registro_produtos
+//Criando o vetor produto que Ã© do tipo struct registro_produtos
 	struct registro_produtos produtos[MAX];
 int main()
 {
 	setlocale(LC_ALL,"Portuguese");
-  	//Declaracao de Variaveis Locais da função
+  	//Declaracao de Variaveis Locais da funÃ§Ã£o
 	float saldo=3000;
 	float lucro=0;
 	int opcao=-1;//variavel que controla o Menu
@@ -62,7 +62,7 @@ int main()
 	
 	return 0;
 }
-// Declaração das funções
+// DeclaraÃ§Ã£o das funÃ§Ãµes
 
 
 void menu()
@@ -81,8 +81,8 @@ void menu()
 
 int verificarSeExiste(int codigo,int qtdd)
 {
-/*A função verificarSeExiste recebe um codigo de entrada e pode retornar dois
-valores diferente,definindo assim se aquele codigo ja existe ou não.*/
+/*A funÃ§Ã£o verificarSeExiste recebe um codigo de entrada e pode retornar dois
+valores diferente,definindo assim se aquele codigo ja existe ou nÃ£o.*/
 	for(int i=0;i<qtdd;i++)
 	{
 		if(codigo==produtos[i].codigo)
@@ -96,13 +96,13 @@ valores diferente,definindo assim se aquele codigo ja existe ou não.*/
 
 void cadastrarProduto(int &qtdd,float &saldo)
 {
-//Declaracao de Variaveis Locais da função
-	int codigoTeste;//Utilizada para testar se um produto ja existe ou não.
+//Declaracao de Variaveis Locais da funÃ§Ã£o
+	int codigoTeste;//Utilizada para testar se um produto ja existe ou nÃ£o.
 	int retorno;//Ira receber o valor retornado de "verificarSeExiste".
-	int quantidadeSoma;//Utilizada para incrementar os produtos já em estoque.
+	int quantidadeSoma;//Utilizada para incrementar os produtos jÃ¡ em estoque.
 	printf("\n\tAdicionar ao estoque");
 	printf("\n----------------------------------------");
-	printf("\nDigite o código do produto:");
+	printf("\nDigite o cÃ³digo do produto:");
 	scanf("%d",&codigoTeste);
 	retorno=verificarSeExiste(codigoTeste,qtdd);
 	if(retorno==-1)
@@ -114,11 +114,11 @@ void cadastrarProduto(int &qtdd,float &saldo)
 		gets(produtos[qtdd].nome);
 		printf("\nDigite a quantidade de produtos:");
 		scanf("%d",&produtos[qtdd].quantidade);
-		printf("\nDigite o preço de compra:R$");
+		printf("\nDigite o preÃ§o de compra:R$");
 		scanf("%f",&produtos[qtdd].precoCompra);
 	// Saida de Dados 
 		produtos[qtdd].precoVenda=(produtos[qtdd].precoCompra)+(produtos[qtdd].precoCompra/2);
-		printf("\nPreço de venda:R$%.2f",produtos[qtdd].precoVenda);
+		printf("\nPreÃ§o de venda:R$%.2f",produtos[qtdd].precoVenda);
 		saldo-=produtos[qtdd].quantidade*produtos[qtdd].precoCompra;;
 		qtdd++;
 	}
@@ -142,18 +142,18 @@ void cadastrarProduto(int &qtdd,float &saldo)
 
 void venderProduto(int &qtdd,float &saldo,float &lucro)
 {
-//Declaracao de Variaveis Locais da função
+//Declaracao de Variaveis Locais da funÃ§Ã£o
 	int codigoVenda;
 	int quantidadeDeVenda;
 	float precoTotalDeVenda;
 	int retorno;//Ira receber o valor retornado de "verificarSeExiste"
 	consultarEstoque(qtdd);//estoque deve ser mostrado na tela.
-	printf("\n\n\nDigite o código do produto que deseja vender:");
+	printf("\n\n\nDigite o cÃ³digo do produto que deseja vender:");
 	scanf("%d",&codigoVenda);
 	retorno=verificarSeExiste(codigoVenda,qtdd);//Verifica se o produto existe no sistema
 	if(retorno==-1)
 	{
-		printf("\nProduto não cadastrado no sistema");
+		printf("\nProduto nÃ£o cadastrado no sistema");
 		printf("\nVenda cancelada");
 	}
 	else
@@ -168,8 +168,8 @@ void venderProduto(int &qtdd,float &saldo,float &lucro)
 				if(quantidadeDeVenda<=produtos[i].quantidade)
 				{
 					precoTotalDeVenda=quantidadeDeVenda*produtos[i].precoVenda;
-				   	printf("\nPreço unitario:R$ %.2f",produtos[i].precoVenda);
-					printf("\nPreço total:R$ %.2f",precoTotalDeVenda);
+				   	printf("\nPreÃ§o unitario:R$ %.2f",produtos[i].precoVenda);
+					printf("\nPreÃ§o total:R$ %.2f",precoTotalDeVenda);
 					printf("\nVenda concluida com sucesso");
 				   	saldo+=precoTotalDeVenda;
 					produtos[i].quantidade-=quantidadeDeVenda;
@@ -194,7 +194,7 @@ void consultarEstoque(int qtdd)
 	printf("\n\tEstoque");
 	for(int i=0;i<qtdd;i++)
 	{
-		printf("\n\nCodigo: %d | Nome: %s | Quantidade: %d | Preço de compra: R$%.2f | Preço de venda: R$%.2f",
+		printf("\n\nCodigo: %d | Nome: %s | Quantidade: %d | PreÃ§o de compra: R$%.2f | PreÃ§o de venda: R$%.2f",
 		produtos[i].codigo,produtos[i].nome,produtos[i].quantidade,produtos[i].precoCompra,produtos[i].precoVenda);
 	}
 }
@@ -204,7 +204,7 @@ void consultarSaldo(float saldo)
 {
 	printf("\n\t\tSaldo do caixa");
 	printf("\n----------------------------------------");
-	printf("\nO saldo atual do Mercado é: R$%.2f",saldo);
+	printf("\nO saldo atual do Mercado Ã©: R$%.2f",saldo);
 }
 
 
@@ -212,5 +212,5 @@ void consularLucro(float lucro)
 {
 	printf("\n\tLucro obtido");
 	printf("\n----------------------------------------");
-	printf("\nO lucro atual do mercado é: R$%.2f",lucro);
+	printf("\nO lucro atual do mercado Ã©: R$%.2f",lucro);
 }
